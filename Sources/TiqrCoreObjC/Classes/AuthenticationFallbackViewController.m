@@ -63,8 +63,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
-    self.errorTitleLabel.text = [Localization localize:@"authentication_fallback_title" comment:@"You appear to be offline"];
-    self.errorInstructionLabel.text = [Localization localize:@"authentication_fallback_description" comment:@"Don\'t worry! Click the QR tag on the\nwebsite. You will be asked to enter the\nfollowing one-time credentials:"];
+    self.errorTitleLabel.text = [Localization localize:@"authentication_fallback_title" comment:@"Your device seems to be offline"];
+    self.errorInstructionLabel.text = [Localization localize:@"authentication_fallback_description" comment:@"Fortunately, you can log in another way:\n\n1. Press ‘Enter code’ below in the QR code on your computer.\n2. Enter this code:"];
     self.yourIdLabel.text = [Localization localize:@"fallback_identifier_label" comment:@"Your ID is:"];
     self.oneTimeLoginCodeLabel.text = [Localization localize:@"otp_label" comment:@"One time password:"];
     self.unverifiedPinLabel.text = [Localization localize:@"note_pin_not_verified_title" comment:@"Note: your PIN has not been verified yet."];

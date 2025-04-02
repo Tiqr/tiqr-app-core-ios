@@ -22,11 +22,11 @@
 /* Allow button */
 "allow_button" = "Allow";
 
-/* Don\'t worry! Click the QR tag on the\nwebsite. You will be asked to enter the\nfollowing one-time credentials: */
-"authentication_fallback_description" = "Don't worry! Click the QR code on the\nwebsite. You will be asked to enter the\nfollowing one-time credentials:";
+/* Fortunately, you can log in another way:\n\n1. Press ‘Enter code’ below in the QR code on your computer.\n2. Enter this code:*/
+"authentication_fallback_description" = "Fortunately, you can log in another way:\n\n1. Press ‘Enter code’ below in the QR code on your computer.\n2. Enter this code:";
 
-/* You appear to be offline */
-"authentication_fallback_title" = "You appear to be offline";
+/* Your device seems to be offline */
+"authentication_fallback_title" = "Your device seems to be offline";
 
 /* Login title */
 "authentication_title" = "Authentication";
