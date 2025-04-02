@@ -22,11 +22,11 @@
 /* Allow button */
 "allow_button" = "Sta toe";
 
-/* Don\'t worry! Click the QR tag on the\nwebsite. You will be asked to enter the\nfollowing one-time credentials: */
-"authentication_fallback_description" = "Geen paniek! Klik op de QR-code op de\nwebsite. Je wordt gevraagd om de volgende\neenmalige gegevens in te geven:";
+/* Fortunately, you can log in another way:\n\n1. Press ‘Enter code’ below in the QR code on your computer.\n2. Enter this code:*/
+"authentication_fallback_description" = "Gelukkig kan je ook op een andere manier inloggen:\n\n1. Druk op ‘Code invoeren’ onder de QR-code op je computer.\n2. Voer daarna deze code in:";
 
-/* You appear to be offline */
-"authentication_fallback_title" = "Je lijkt offline te zijn";
+/* Your device seems to be offline */
+"authentication_fallback_title" = "Je apparaat lijkt offline te zijn";
 
 /* Login title */
 "authentication_title" = "Login";

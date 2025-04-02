@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -12,7 +12,6 @@
                 <outlet property="errorInstructionLabel" destination="44" id="50"/>
                 <outlet property="errorTitleLabel" destination="43" id="49"/>
                 <outlet property="identityIdentifierLabel" destination="24" id="30"/>
-                <outlet property="oneTimeLoginCodeLabel" destination="37" id="52"/>
                 <outlet property="oneTimePasswordLabel" destination="35" id="38"/>
                 <outlet property="retryLabel" destination="47" id="54"/>
                 <outlet property="unverifiedPinLabel" destination="45" id="53"/>
@@ -32,42 +31,45 @@
                         <constraint firstAttribute="height" constant="5" id="avv-NG-05j"/>
                     </constraints>
                 </view>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="You appear to be offline" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="43" userLabel="Title Label">
-                    <rect key="frame" x="20" y="20" width="280" height="19"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Your device seems to be offline" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="43" userLabel="Title Label">
+                    <rect key="frame" x="20" y="20" width="280" height="18.5"/>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="16"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Don't worry! Click the QR tag on the website. You will be asked to enter the following one-time credentials:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="44" userLabel="Description Label">
-                    <rect key="frame" x="20" y="49" width="280" height="48.5"/>
+                    <rect key="frame" x="20" y="48.5" width="280" height="48.5"/>
                     <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Your ID is:" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="36">
-                    <rect key="frame" x="20" y="117.5" width="280" height="17"/>
-                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
-                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Identity Identifier" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="24">
-                    <rect key="frame" x="20" y="144.5" width="280" height="18"/>
-                    <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="16"/>
-                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Your one-time login code is:" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="37">
-                    <rect key="frame" x="20" y="187.5" width="280" height="17"/>
-                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
-                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                </label>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="T42-Wi-HfA">
+                    <rect key="frame" x="20" y="166" width="280" height="46.5"/>
+                    <subviews>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" text="Your ID is:" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="36">
+                            <rect key="frame" x="100" y="0.0" width="80" height="16.5"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="80" id="3cQ-xk-5hF"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
+                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </label>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Identity Identifier" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="24">
+                            <rect key="frame" x="71.5" y="26.5" width="137" height="20"/>
+                            <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="17"/>
+                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </label>
+                    </subviews>
+                </stackView>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Note: your PIN has not been verified yet." textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="45">
-                    <rect key="frame" x="20" y="267.5" width="280" height="14"/>
+                    <rect key="frame" x="20" y="301.5" width="280" height="14"/>
                     <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="12"/>
                     <color key="textColor" red="0.3333333432674408" green="0.3333333432674408" blue="0.3333333432674408" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="If you can't login with the credentials above, scan again and enter the correct PIN code." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="47">
-                    <rect key="frame" x="20" y="286.5" width="280" height="28"/>
+                    <rect key="frame" x="20" y="320.5" width="280" height="28"/>
                     <fontDescription key="fontDescription" name="Helvetica-Oblique" family="Helvetica" pointSize="12"/>
                     <color key="textColor" red="0.3333333432674408" green="0.3333333432674408" blue="0.3333333432674408" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
@@ -80,8 +82,8 @@
                     </constraints>
                 </view>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="OTP" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="35">
-                    <rect key="frame" x="20" y="214.5" width="280" height="23"/>
-                    <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="20"/>
+                    <rect key="frame" x="20" y="117" width="280" height="29"/>
+                    <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="25"/>
                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </label>
             </subviews>
@@ -91,31 +93,25 @@
                 <constraint firstAttribute="trailing" secondItem="35" secondAttribute="trailing" constant="20" id="5j5-kF-akh"/>
                 <constraint firstItem="45" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="20" id="6s6-Pz-8Dq"/>
                 <constraint firstAttribute="trailing" secondItem="43" secondAttribute="trailing" constant="20" id="A0v-iS-K0w"/>
-                <constraint firstItem="24" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="20" id="IzY-67-rfO"/>
                 <constraint firstItem="44" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="20" id="LRd-hs-FJ1"/>
                 <constraint firstAttribute="trailing" secondItem="45" secondAttribute="trailing" constant="20" id="NB8-xm-HSh"/>
                 <constraint firstAttribute="trailing" secondItem="47" secondAttribute="trailing" constant="20" id="R0I-Kp-UY3"/>
                 <constraint firstAttribute="trailing" secondItem="44" secondAttribute="trailing" constant="20" id="RMS-Fi-IO6"/>
-                <constraint firstAttribute="trailing" secondItem="36" secondAttribute="trailing" constant="20" id="Tid-9u-ZJ1"/>
-                <constraint firstItem="36" firstAttribute="top" secondItem="44" secondAttribute="bottom" constant="20" id="VE5-VJ-xVY"/>
+                <constraint firstItem="T42-Wi-HfA" firstAttribute="top" secondItem="35" secondAttribute="bottom" constant="20" id="TVE-BD-Wm0"/>
+                <constraint firstItem="T42-Wi-HfA" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="20" id="UI8-hM-Z4v"/>
                 <constraint firstItem="PKg-tK-fjJ" firstAttribute="top" secondItem="1" secondAttribute="top" id="VoZ-EM-YCu"/>
                 <constraint firstItem="qqF-zH-8ph" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="W7N-ky-i2J"/>
-                <constraint firstAttribute="trailing" secondItem="24" secondAttribute="trailing" constant="20" id="WxN-KV-tlS"/>
                 <constraint firstItem="43" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="20" id="Xzk-Dg-PMZ"/>
-                <constraint firstItem="45" firstAttribute="top" secondItem="35" secondAttribute="bottom" constant="30" id="YEc-FA-64T"/>
                 <constraint firstItem="47" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="20" id="ZG9-zk-zLd"/>
                 <constraint firstAttribute="bottom" secondItem="qqF-zH-8ph" secondAttribute="bottom" id="ciN-39-tSV"/>
-                <constraint firstItem="35" firstAttribute="top" secondItem="37" secondAttribute="bottom" constant="10" id="ddN-4k-hUM"/>
-                <constraint firstItem="36" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="20" id="deM-cg-t3V"/>
                 <constraint firstItem="47" firstAttribute="top" secondItem="45" secondAttribute="bottom" constant="5" id="ejO-5i-MOT"/>
-                <constraint firstItem="37" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="20" id="eqD-ml-kVf"/>
                 <constraint firstItem="PKg-tK-fjJ" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="g9Q-8i-2Xg"/>
-                <constraint firstAttribute="trailing" secondItem="37" secondAttribute="trailing" constant="20" id="hzw-ER-TLK"/>
                 <constraint firstItem="44" firstAttribute="top" secondItem="43" secondAttribute="bottom" constant="10" id="jao-ds-5Ud"/>
                 <constraint firstItem="35" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="20" id="qtc-dN-3yE"/>
-                <constraint firstItem="37" firstAttribute="top" secondItem="24" secondAttribute="bottom" constant="25" id="rUU-89-1a4"/>
+                <constraint firstItem="45" firstAttribute="top" secondItem="T42-Wi-HfA" secondAttribute="bottom" constant="89" id="sA5-W5-FnQ"/>
+                <constraint firstAttribute="trailing" secondItem="T42-Wi-HfA" secondAttribute="trailing" constant="20" id="tzg-06-0gY"/>
                 <constraint firstAttribute="trailing" secondItem="PKg-tK-fjJ" secondAttribute="trailing" id="vIE-ir-mdB"/>
-                <constraint firstItem="24" firstAttribute="top" secondItem="36" secondAttribute="bottom" constant="10" id="zCG-jA-iCT"/>
+                <constraint firstItem="35" firstAttribute="top" secondItem="44" secondAttribute="bottom" constant="20" id="xlJ-7B-KZh"/>
                 <constraint firstAttribute="trailing" secondItem="qqF-zH-8ph" secondAttribute="trailing" id="zeu-8C-hiM"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
