@@ -86,10 +86,9 @@
 
     self.errorInstructionLabel.font = [ThemeService shared].theme.bodyFont;
     self.yourIdLabel.font = [ThemeService shared].theme.bodyFont;
-    self.oneTimeLoginCodeLabel.font = [ThemeService shared].theme.bodyFont;
     self.unverifiedPinLabel.font = [ThemeService shared].theme.bodyFont;
     self.retryLabel.font = [ThemeService shared].theme.bodyFont;
-
+    self.oneTimeLoginCodeLabel.font = [ThemeService shared].theme.bodyBoldFont;
     self.identityIdentifierLabel.font = [ThemeService shared].theme.bodyBoldFont;
 }
 
