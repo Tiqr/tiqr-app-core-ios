@@ -23,7 +23,10 @@
 "allow_button" = "Sta toe";
 
 /* Fortunately, you can log in another way:\n\n1. Press ‘Enter code’ below in the QR code on your computer.\n2. Enter this code:*/
-"authentication_fallback_description" = "Gelukkig kan je ook op een andere manier inloggen:\n\n1. Druk op ‘Code invoeren’ onder de QR-code op je computer.\n2. Voer daarna deze code in:";
+"authentication_fallback_description" = "Maak je geen zorgen! Klik op de QR-code op de website. Je wordt gevraagd de volgende eenmalige gegevens in te voeren:";
+
+/* One time password title label */
+"one-time-password-title-label" = "Eenmalig wachtwoord:";
 
 /* Your device seems to be offline */
 "authentication_fallback_title" = "Je apparaat lijkt offline te zijn";

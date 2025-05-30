@@ -23,7 +23,10 @@
 "allow_button" = "Allow";
 
 /* Fortunately, you can log in another way:\n\n1. Press ‘Enter code’ below in the QR code on your computer.\n2. Enter this code:*/
-"authentication_fallback_description" = "Fortunately, you can log in another way:\n\n1. Press ‘Enter code’ below in the QR code on your computer.\n2. Enter this code:";
+"authentication_fallback_description" = "Don't worry! Click the QR code on the website. You will be asked to enter the following one-time credentials:";
+
+/* One time password title label */
+"one-time-password-title-label" = "One-time password:";
 
 /* Your device seems to be offline */
 "authentication_fallback_title" = "Your device seems to be offline";

@@ -41,6 +41,7 @@
 @property (nonatomic, strong) IBOutlet UILabel *errorInstructionLabel;
 @property (nonatomic, strong) IBOutlet UILabel *yourIdLabel;
 @property (nonatomic, strong) IBOutlet UILabel *oneTimeLoginCodeLabel;
+@property (nonatomic, strong) IBOutlet UILabel *oneTimePasswordTitleLabel;
 @property (nonatomic, strong) IBOutlet UILabel *unverifiedPinLabel;
 @property (nonatomic, strong) IBOutlet UILabel *retryLabel;
 @property (nonatomic, strong) IBOutlet UILabel *identityIdentifierLabel;
@@ -63,6 +64,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
+    self.oneTimePasswordTitleLabel.text = [Localization localize:@"one-time-password-title-label" comment:@"One time password"];
     self.errorTitleLabel.text = [Localization localize:@"authentication_fallback_title" comment:@"Your device seems to be offline"];
     self.errorInstructionLabel.text = [Localization localize:@"authentication_fallback_description" comment:@"Fortunately, you can log in another way:\n\n1. Press ‘Enter code’ below in the QR code on your computer.\n2. Enter this code:"];
     self.yourIdLabel.text = [Localization localize:@"fallback_identifier_label" comment:@"Your ID is:"];
