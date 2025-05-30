@@ -13,8 +13,8 @@
                 <outlet property="errorTitleLabel" destination="43" id="49"/>
                 <outlet property="identityIdentifierLabel" destination="24" id="30"/>
                 <outlet property="oneTimeLoginCodeLabel" destination="O4f-3S-ryX" id="PtB-Ld-FSC"/>
-                <outlet property="oneTimePasswordLabel" destination="35" id="38"/>
-                <outlet property="oneTimePasswordTitleLabel" destination="35" id="KqO-LC-oew"/>
+                <outlet property="oneTimePasswordLabel" destination="O4f-3S-ryX" id="cVw-5P-KIf"/>
+                <outlet property="oneTimePasswordTitleLabel" destination="35" id="0wv-R7-OXU"/>
                 <outlet property="retryLabel" destination="47" id="54"/>
                 <outlet property="unverifiedPinLabel" destination="45" id="53"/>
                 <outlet property="view" destination="1" id="3"/>
