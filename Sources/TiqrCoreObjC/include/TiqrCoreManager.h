@@ -36,7 +36,7 @@
 + (instancetype _Nonnull)sharedInstance;
 - (UINavigationController * _Nonnull)startWithOptions:(NSDictionary * _Nullable)launchOptions;
 
-- (void)startChallenge:(NSString *_Nonnull)rawChallenge;
+- (void)startChallenge:(NSString *_Nonnull)rawChallenge serviceName:(NSString *_Nullable)serviceName;
 - (void)popToStartViewControllerAnimated:(BOOL)animated;
 - (void)popToRootViewControllerAnimated:(BOOL)animated;
 

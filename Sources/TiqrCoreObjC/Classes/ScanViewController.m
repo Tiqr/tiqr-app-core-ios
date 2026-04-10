@@ -292,7 +292,9 @@
                 AuthenticationIdentityViewController *identityViewController = [[AuthenticationIdentityViewController alloc] initWithAuthenticationChallenge:authenticationChallenge];
                 viewController = identityViewController;
             } else {
-                AuthenticationConfirmViewController *confirmViewController = [[AuthenticationConfirmViewController alloc] initWithAuthenticationChallenge:authenticationChallenge];
+                AuthenticationConfirmViewController *confirmViewController = [[AuthenticationConfirmViewController alloc] initWithAuthenticationChallenge: authenticationChallenge
+                    serviceName: nil
+                ];
                 viewController = confirmViewController;
             }
         } break;

@@ -83,8 +83,8 @@ public extension Tiqr {
         NotificationRegistration.sharedInstance().sendRequest(withDeviceToken: token)
     }
 
-    func startChallenge(challenge: String) {
-        TiqrCoreManager.sharedInstance().startChallenge(challenge)
+    func startChallenge(challenge: String, serviceName: String?) {
+        TiqrCoreManager.sharedInstance().startChallenge(challenge, serviceName: serviceName)
     }
 }
 

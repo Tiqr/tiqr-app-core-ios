@@ -72,7 +72,9 @@
         NSDictionary *info = [launchOptions valueForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
 
         if (info != nil) {
-            [self startChallenge:[info valueForKey:@"challenge"]];
+            [self startChallenge:[info valueForKey:@"challenge"]
+                     serviceName:[info valueForKey:@"serviceName"]
+            ];
         }
     }
 
@@ -90,7 +92,9 @@
 #pragma mark -
 #pragma mark Authentication / enrollment challenge
 
-- (void)startChallenge: (NSString *)rawChallenge  {
+
+- (void)startChallenge: (NSString *)rawChallenge
+           serviceName:(NSString *)serviceName {
     UIViewController *firstViewController = self.navigationController.viewControllers[[self.navigationController.viewControllers count] > 1 ? 1 : 0];
     [self.navigationController popToViewController:firstViewController animated:NO];
 
@@ -104,7 +108,10 @@
                     AuthenticationChallenge *authenticationChallenge = (AuthenticationChallenge *)challengeObject;
                     
                     if (authenticationChallenge.identity != nil) {
-                        viewController = [[AuthenticationConfirmViewController alloc] initWithAuthenticationChallenge:authenticationChallenge];
+                        viewController = [[AuthenticationConfirmViewController alloc]
+                                          initWithAuthenticationChallenge:authenticationChallenge
+                                          serviceName: serviceName
+                        ];
                     } else {
                         viewController = [[AuthenticationIdentityViewController alloc] initWithAuthenticationChallenge:authenticationChallenge];
                     }
