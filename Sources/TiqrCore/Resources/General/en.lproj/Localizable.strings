@@ -46,6 +46,9 @@
 /* Are you sure you want to login? */
 "confirm_authentication" = "Are you sure you want to login?";
 
+/* Are you sure you want to log in to: */
+"confirm_authentication_with_service_name" = "Are you sure you want to log in to:";
+
 /* Authentication confirm back button title */
 "confirm_authentication_title" = "Confirm login";
 

@@ -48,6 +48,7 @@
  *
  * @return initialized controller instance
  */
-- (instancetype)initWithAuthenticationChallenge:(AuthenticationChallenge *)challenge;
+- (instancetype)initWithAuthenticationChallenge:(AuthenticationChallenge *)challenge
+                                    serviceName: (NSString *)serviceName;
 
 @end

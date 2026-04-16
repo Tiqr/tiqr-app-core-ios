@@ -33,8 +33,14 @@ import NotificationCenter
 @objcMembers
 public class RecentNotifications: NSObject {
     
+    public struct NotificationData {
+        public var challenge: String
+        public var serviceName: String?
+    }
+    
     private static let keyLastNotificationTimeoutTimestamp = "lastNotificationTimeoutTimestamp"
     private static let keyLastNotificationChallenge = "lastNotificationChallenge"
+    private static let keyLastNotificationServiceName = "lastNotificationServiceName"
     private static let keyLastNotificationIdentifier = "lastNotificationIdentifier"
     
     private let appGroup: String
@@ -52,7 +58,7 @@ public class RecentNotifications: NSObject {
         return UserDefaults.init(suiteName: appGroup)!
     }
     
-    public func onNewNotification(timeOut: Any?, challenge: Any?, notificationId: String) {
+    public func onNewNotification(timeOut: Any?, challenge: Any?, serviceName: String?, notificationId: String) {
         guard let challengeUrl = challenge as? String else {
             assertionFailure("Challenge is not a string! Received: \(challenge ?? "<nil>").")
             return
@@ -74,9 +80,10 @@ public class RecentNotifications: NSObject {
         defaults.setValue(timeoutTimestamp, forKey: RecentNotifications.keyLastNotificationTimeoutTimestamp)
         defaults.setValue(challengeUrl, forKey: RecentNotifications.keyLastNotificationChallenge)
         defaults.setValue(notificationId, forKey: RecentNotifications.keyLastNotificationIdentifier)
+        defaults.setValue(serviceName, forKey: RecentNotifications.keyLastNotificationServiceName)
     }
     
-    public func getLastNotificationChallenge() -> String? {
+    public func getLastNotificationData() -> NotificationData? {
         let defaults = defaults()
         let timeoutTimestamp = defaults.integer(forKey: RecentNotifications.keyLastNotificationTimeoutTimestamp)
         if timeoutTimestamp < Int(Date().timeIntervalSince1970) {
@@ -84,6 +91,7 @@ public class RecentNotifications: NSObject {
             return nil
         }
         let challengeUrl = defaults.string(forKey: RecentNotifications.keyLastNotificationChallenge)
+        let serviceName = defaults.string(forKey: RecentNotifications.keyLastNotificationServiceName)
         if let notificationIdentifier = defaults.string(forKey: RecentNotifications.keyLastNotificationIdentifier) {
             UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: [notificationIdentifier])
         }
@@ -91,6 +99,10 @@ public class RecentNotifications: NSObject {
         defaults.removeObject(forKey: RecentNotifications.keyLastNotificationChallenge)
         defaults.removeObject(forKey: RecentNotifications.keyLastNotificationTimeoutTimestamp)
         defaults.removeObject(forKey: RecentNotifications.keyLastNotificationIdentifier)
-        return challengeUrl
+        defaults.removeObject(forKey: RecentNotifications.keyLastNotificationServiceName)
+        if let challengeUrl {
+            return NotificationData(challenge: challengeUrl, serviceName: serviceName)
+        }
+        return nil
     }
 }

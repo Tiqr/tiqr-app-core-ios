@@ -37,6 +37,7 @@
 @interface AuthenticationIdentityViewController ()
 
 @property (nonatomic, strong) AuthenticationChallenge *challenge;
+@property (nonatomic, copy) NSString *serviceName;
 @property (nonatomic, strong) IBOutlet UILabel *selectAccountLabel;
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
 
@@ -101,7 +102,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	self.challenge.identity = self.challenge.identities[indexPath.row];
-    AuthenticationConfirmViewController *viewController = [[AuthenticationConfirmViewController alloc] initWithAuthenticationChallenge:self.challenge];
+    AuthenticationConfirmViewController *viewController = [
+        [AuthenticationConfirmViewController alloc]
+        initWithAuthenticationChallenge:self.challenge
+        serviceName: self.serviceName
+    ];
 	[self.navigationController pushViewController:viewController animated:YES];
 }
 

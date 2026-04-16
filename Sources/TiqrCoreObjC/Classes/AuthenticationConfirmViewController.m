@@ -44,6 +44,7 @@
 @interface AuthenticationConfirmViewController ()
 
 @property (nonatomic, strong) AuthenticationChallenge *challenge;
+@property (nonatomic, copy) NSString *serviceName;
 @property (nonatomic, strong) IBOutlet UILabel *loginConfirmLabel;
 @property (nonatomic, strong) IBOutlet UILabel *loggedInAsLabel;
 @property (nonatomic, strong) IBOutlet UILabel *toLabel;
@@ -57,17 +58,22 @@
 @property (nonatomic, strong) IBOutlet UILabel *identityIdentifierLabel;
 @property (nonatomic, strong) IBOutlet UILabel *serviceProviderDisplayNameLabel;
 @property (nonatomic, strong) IBOutlet UILabel *serviceProviderIdentifierLabel;
+@property (nonatomic, strong) IBOutlet UILabel *serviceNameLabel;
+@property (nonatomic, strong) IBOutlet NSLayoutConstraint *containerTopConstraint;
 @property (nonatomic, copy) NSString *response;
 @property (strong, nonatomic) IBOutlet UIView *nonTouchIDViewsContainer;
+
 
 @end
 
 @implementation AuthenticationConfirmViewController
 
-- (instancetype)initWithAuthenticationChallenge:(AuthenticationChallenge *)challenge {
+- (instancetype)initWithAuthenticationChallenge:(AuthenticationChallenge *)challenge
+                                    serviceName: (NSString *)serviceName {
     self = [super initWithNibName:@"AuthenticationConfirmView" bundle:SWIFTPM_MODULE_BUNDLE];
     if (self != nil) {
         self.challenge = challenge;
+        self.serviceName = serviceName;
     }
     
     return self;
@@ -75,8 +81,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.loginConfirmLabel.text = [Localization localize:@"confirm_authentication" comment:@"Are you sure you want to login?"];
+    if (self.serviceName && self.serviceName.length > 0) {
+        self.containerTopConstraint.constant = self.view.frame.size.height / 4;
+        self.loginConfirmLabel.text = [Localization localize:@"confirm_authentication_with_service_name" comment:@"Are you sure you want to log in to:"];
+        self.serviceNameLabel.text = self.serviceName;
+        self.toLabel.hidden = YES;
+        self.serviceProviderIdentifierLabel.hidden = YES;
+        self.serviceProviderDisplayNameLabel.hidden = YES;
+    } else {
+        self.loginConfirmLabel.text = [Localization localize:@"confirm_authentication" comment:@"Are you sure you want to login?"];
+    }
     self.loggedInAsLabel.text = [Localization localize:@"you_will_be_logged_in_as" comment:@"You will be logged in as:"];
     self.toLabel.text = [Localization localize:@"to_service_provider" comment:@"to:"];
     self.accountLabel.text = [Localization localize:@"full_name" comment:@"Account"];

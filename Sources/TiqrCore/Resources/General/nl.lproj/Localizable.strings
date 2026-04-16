@@ -46,6 +46,10 @@
 /* Are you sure you want to login? */
 "confirm_authentication" = "Weet je zeker dat je wilt inloggen?";
 
+/* Are you sure you want to log in to: */
+"confirm_authentication_with_service_name" = "Weet je zeker dat je wilt inloggen op:";
+
+
 /* Authentication confirm back button title */
 "confirm_authentication_title" = "Login bevestigen";
 
