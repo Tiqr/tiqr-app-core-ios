@@ -108,7 +108,7 @@
 }
 
 - (void)updateVersion {
-    self.versionLabel.text = [NSString stringWithFormat: @"%@ %@ %@ - core %@", TiqrConfig.appName, TiqrConfig.appAndBuildVersion, TiqrConfig.shortGitReleaseVersion, TiqrConfig.shortCoreLibraryVersion];
+    self.versionLabel.text = [NSString stringWithFormat: @"%@ %@", TiqrConfig.appName, TiqrConfig.appAndBuildVersion];
 }
 
 - (void)viewSafeAreaInsetsDidChange {
