@@ -86,9 +86,11 @@
         self.loginConfirmLabel.text = [Localization localize:@"confirm_authentication_with_service_name" comment:@"Are you sure you want to log in to:"];
         self.serviceNameLabel.text = self.serviceName;
         self.toLabel.hidden = YES;
+        self.serviceNameLabel.hidden = NO;
         self.serviceProviderIdentifierLabel.hidden = YES;
         self.serviceProviderDisplayNameLabel.hidden = YES;
     } else {
+        self.serviceNameLabel.hidden = YES;
         self.loginConfirmLabel.text = [Localization localize:@"confirm_authentication" comment:@"Are you sure you want to login?"];
     }
     self.loggedInAsLabel.text = [Localization localize:@"you_will_be_logged_in_as" comment:@"You will be logged in as:"];
