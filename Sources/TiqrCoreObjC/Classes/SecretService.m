@@ -341,11 +341,14 @@
     
     [context evaluateAccessControl:sacObject operation:LAAccessControlOperationCreateItem localizedReason:reason reply:^(BOOL success, NSError * _Nullable error) {
         
-        if (success) {
+        NSString *serviceIdentifier = identity.identityProvider.identifier;
+        NSString *accountIdentifier = identity.identifier ? [self biometricAccountValueForIdentifier:identity.identifier] : nil;
+        
+        if (success && serviceIdentifier != nil && accountIdentifier != nil && secret != nil) {
             NSDictionary *data = @{
                                    (__bridge id)kSecClass: (__bridge id)kSecClassGenericPassword,
-                                   (__bridge id)kSecAttrService: identity.identityProvider.identifier,
-                                   (__bridge id)kSecAttrAccount: [self biometricAccountValueForIdentifier:identity.identifier],
+                                   (__bridge id)kSecAttrService: serviceIdentifier,
+                                   (__bridge id)kSecAttrAccount: accountIdentifier,
                                    (__bridge id)kSecValueData: secret,
                                    (__bridge id)kSecAttrAccessible: (__bridge id)kSecAttrAccessibleWhenUnlocked,
                                    (__bridge id)kSecUseAuthenticationContext: context
@@ -358,8 +361,8 @@
                 // Remove legacy data
                 NSDictionary *deleteQuery = @{
                                               (__bridge id)kSecClass:  (__bridge id)kSecClassGenericPassword,
-                                              (__bridge id)kSecAttrService: identity.identityProvider.identifier,
-                                              (__bridge id)kSecAttrAccount: [self biometricAccountValueForIdentifier:identity.identifier]
+                                              (__bridge id)kSecAttrService: serviceIdentifier,
+                                              (__bridge id)kSecAttrAccount: accountIdentifier
                                               };
                 
                 SecItemDelete((__bridge CFDictionaryRef)deleteQuery);
