@@ -330,6 +330,16 @@
 }
 
 - (void)setSecret:(NSData *)secret usingTouchIDforIdentity:(Identity *)identity withCompletionHandler:(void (^)(BOOL success))completionHandler {
+    // Snapshot everything we need from the (possibly managed-object-context-confined)
+    // `identity` up front, on the caller's queue. The LocalAuthentication reply block
+    // runs on an arbitrary queue, and by the time it fires `identity` may have been
+    // deleted/invalidated (e.g. account removal). Capturing the Identity object itself
+    // and touching its properties later would be an unsafe cross-queue Core Data access
+    // and could resolve to nil, crashing the NSDictionary literal below. Instead we only
+    // capture immutable, already-resolved values in the block.
+    NSString *serviceIdentifier = identity.identityProvider.identifier;
+    NSString *accountIdentifier = identity.identifier ? [self biometricAccountValueForIdentifier:identity.identifier] : nil;
+
     CFErrorRef error = NULL;
     SecAccessControlRef sacObject = SecAccessControlCreateWithFlags(kCFAllocatorDefault,
                                                                     kSecAttrAccessibleWhenPasscodeSetThisDeviceOnly,
@@ -341,11 +351,11 @@
     
     [context evaluateAccessControl:sacObject operation:LAAccessControlOperationCreateItem localizedReason:reason reply:^(BOOL success, NSError * _Nullable error) {
         
-        if (success) {
+        if (success && serviceIdentifier != nil && accountIdentifier != nil && secret != nil) {
             NSDictionary *data = @{
                                    (__bridge id)kSecClass: (__bridge id)kSecClassGenericPassword,
-                                   (__bridge id)kSecAttrService: identity.identityProvider.identifier,
-                                   (__bridge id)kSecAttrAccount: [self biometricAccountValueForIdentifier:identity.identifier],
+                                   (__bridge id)kSecAttrService: serviceIdentifier,
+                                   (__bridge id)kSecAttrAccount: accountIdentifier,
                                    (__bridge id)kSecValueData: secret,
                                    (__bridge id)kSecAttrAccessible: (__bridge id)kSecAttrAccessibleWhenUnlocked,
                                    (__bridge id)kSecUseAuthenticationContext: context
@@ -358,8 +368,8 @@
                 // Remove legacy data
                 NSDictionary *deleteQuery = @{
                                               (__bridge id)kSecClass:  (__bridge id)kSecClassGenericPassword,
-                                              (__bridge id)kSecAttrService: identity.identityProvider.identifier,
-                                              (__bridge id)kSecAttrAccount: [self biometricAccountValueForIdentifier:identity.identifier]
+                                              (__bridge id)kSecAttrService: serviceIdentifier,
+                                              (__bridge id)kSecAttrAccount: accountIdentifier
                                               };
                 
                 SecItemDelete((__bridge CFDictionaryRef)deleteQuery);
