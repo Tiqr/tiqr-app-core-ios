@@ -17,7 +17,6 @@
  */
 
 #import <QuartzCore/QuartzCore.h>
-#import <AudioToolbox/AudioToolbox.h>
 #import <AVFoundation/AVFoundation.h>
 #import "ScanViewController.h"
 #import "ScanOverlayView.h"
@@ -34,7 +33,7 @@
 #import "TiqrConfig.h"
 @import TiqrCore;
 
-@interface ScanViewController () <AVAudioPlayerDelegate, AVCaptureMetadataOutputObjectsDelegate, UIAlertViewDelegate>
+@interface ScanViewController () <AVCaptureMetadataOutputObjectsDelegate, UIAlertViewDelegate>
 
 #if HAS_AVFF
 @property (nonatomic, strong) AVCaptureSession *captureSession;
@@ -43,7 +42,6 @@
 
 @property (nonatomic) dispatch_queue_t sessionQueue;
 
-@property (nonatomic, strong) AVAudioPlayer *audioPlayer;
 @property (nonatomic, assign, getter=isDecoding) BOOL decoding;
 @property (nonatomic, strong) UIBarButtonItem *identitiesButtonItem;
 
@@ -65,15 +63,6 @@
         
         self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
         
-        NSString *filePath = [SWIFTPM_MODULE_BUNDLE pathForResource:@"cowbell" ofType:@"wav"];
-
-        NSURL *fileURL = [NSURL fileURLWithPath:filePath isDirectory:NO];
-        [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryAmbient error:nil];
-
-        self.audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:nil];
-        [self.audioPlayer prepareToPlay];
-        self.audioPlayer.delegate = self;
-
         UIImage *image = [UIImage imageNamed:@"identities-icon" inBundle:SWIFTPM_MODULE_BUNDLE compatibleWithTraitCollection:nil];
         self.identitiesButtonItem = [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(listIdentities)];
         self.navigationItem.rightBarButtonItem = self.identitiesButtonItem;
@@ -205,7 +194,6 @@
     
     // now, in a selector, call the delegate to give this overlay time to show the points
     [self performSelector:@selector(processChallenge:) withObject:metadataObject.stringValue afterDelay:1.0];
-    [self.audioPlayer play];
 }
 
 #pragma mark -

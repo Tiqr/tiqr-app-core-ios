@@ -23,7 +23,6 @@ let package = Package(
             name: "TiqrCoreObjC",
             dependencies: ["TiqrCore"],
             resources: [
-                .process("Resources/Audio/cowbell.wav"),
                 .process("Resources/Views/HTML/start.html")
             ])
     ]
